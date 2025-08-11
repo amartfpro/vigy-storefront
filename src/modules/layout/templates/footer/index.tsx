@@ -115,7 +115,7 @@ export default async function Footer() {
         {/* Redes sociales */}
          <div className="flex w-full mb-8 justify-center gap-6">
           <a
-            href="https://instagram.com/TU_USUARIO"
+            href="https://instagram.com/vigysport"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-ui-fg-base text-ui-fg-muted"
@@ -124,7 +124,7 @@ export default async function Footer() {
             <SiInstagram className="w-6 h-6" />
           </a>
           <a
-            href="https://youtube.com/@TU_CANAL"
+            href="https://youtube.com/@vigysport"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-ui-fg-base text-ui-fg-muted"
@@ -133,7 +133,7 @@ export default async function Footer() {
             <SiYoutube className="w-6 h-6" />
           </a>
           <a
-            href="mailto:contact@vigy.example"
+            href="mailto:help@vigysportswear.com"
             className="hover:text-ui-fg-base text-ui-fg-muted"
             aria-label="Email"
           >
