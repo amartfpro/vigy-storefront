@@ -1,30 +1,15 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@layer utilities {
-  /* Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .no-scrollbar::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
+@layer base {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar::-webkit-scrollbar-track { background-color: transparent; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
   input:focus ~ label,
-  input:not(:placeholder-shown) ~ label {
-    @apply -translate-y-2 text-xsmall-regular;
-  }
-
-  input:focus ~ label {
-    @apply left-0;
-  }
+  input:not(:placeholder-shown) ~ label { @apply -translate-y-2 text-xsmall-regular; }
+  input:focus ~ label { @apply left-0; }
 
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -44,135 +29,18 @@
   input[type="search"]::-webkit-search-decoration,
   input[type="search"]::-webkit-search-cancel-button,
   input[type="search"]::-webkit-search-results-button,
-  input[type="search"]::-webkit-search-results-decoration {
-    -webkit-appearance: none;
-  }
-}
+  input[type="search"]::-webkit-search-results-decoration { -webkit-appearance: none; }
 
-@layer components {
-  .content-container {
-    @apply max-w-[1440px] w-full mx-auto px-6;
-  }
+  ::selection { background: theme('colors.orange.base'); color: #fff; }
 
-  .contrast-btn {
-    @apply px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-200 ease-in;
-  }
-
-  .text-xsmall-regular {
-    @apply text-[10px] leading-4 font-normal;
-  }
-
-  .text-small-regular {
-    @apply text-xs leading-5 font-normal;
-  }
-
-  .text-small-semi {
-    @apply text-xs leading-5 font-semibold;
-  }
-
-  .text-base-regular {
-    @apply text-sm leading-6 font-normal;
-  }
-
-  .text-base-semi {
-    @apply text-sm leading-6 font-semibold;
-  }
-
-  .text-large-regular {
-    @apply text-base leading-6 font-normal;
-  }
-
-  .text-large-semi {
-    @apply text-base leading-6 font-semibold;
-  }
-
-  .text-xl-regular {
-    @apply text-2xl leading-[36px] font-normal;
-  }
-
-  .text-xl-semi {
-    @apply text-2xl leading-[36px] font-semibold;
-  }
-
-  .text-2xl-regular {
-    @apply text-[30px] leading-[48px] font-normal;
-  }
-
-  .text-2xl-semi {
-    @apply text-[30px] leading-[48px] font-semibold;
-  }
-
-  .text-3xl-regular {
-    @apply text-[32px] leading-[44px] font-normal;
-  }
-
-  .text-3xl-semi {
-    @apply text-[32px] leading-[44px] font-semibold;
-  }
-}
-
-@layer utilities {
-  .border-ui-border-interactive {
-    border-color: theme('colors.orange.base') !important;
-  }
-
-  .border-ui-border-interactive:focus,
-  .border-ui-border-interactive:active,
-  .border-ui-border-interactive[data-state="on"] {
-    border-color: theme('colors.orange.base') !important;
-  }
-
-  .hover\:shadow-borders-interactive-with-active:hover {
-    box-shadow: 0 0 0 2px theme('colors.orange.base') !important;
-  } 
-}
-
-@layer utilities {
-  /* Texto interactivo (links, botones de texto) */
-  .text-ui-fg-interactive {
-    color: theme('colors.orange.base') !important;
-  }
-
-  .text-ui-fg-interactive-hover,
-  .text-ui-fg-interactive:hover {
-    color: theme('colors.orange.dark') !important;
-  }
-}
-
-@layer utilities {
-  /* Fondo interactivo (botones, toggles, etc.) */
-  .bg-ui-bg-interactive {
-    background-color: theme('colors.orange.base') !important;
-  }
-
-  .bg-ui-bg-interactive-hover,
-  .bg-ui-bg-interactive:hover {
-    background-color: theme('colors.orange.dark') !important;
-  }
-
-  /* Asegura contraste en texto si el fondo es naranja */
-  .bg-ui-bg-interactive,
-  .bg-ui-bg-interactive-hover {
-    color: #fff !important;
-  }
-}
-
-@layer base {
-  /* Opcional: limita al body si quieres acotar el alcance */
-  :root, .theme-vigy {
-    /* Tokens “interactive” del preset hacia tu naranja */
+  :root {
     --fg-interactive: theme('colors.orange.base');
     --fg-interactive-hover: theme('colors.orange.dark');
-
     --bg-interactive: theme('colors.orange.base');
     --bg-interactive-hover: theme('colors.orange.dark');
-
     --border-interactive: theme('colors.orange.base');
     --border-interactive-hover: theme('colors.orange.dark');
-
     --ring-interactive: theme('colors.orange.base');
-
-    /* Sombra/borde compuesta que usa Medusa en estados checked/active */
     --borders-interactive-with-shadow:
       0 0 0 1px theme('colors.orange.base'),
       0 0 0 4px rgba(255,140,0,.28);
@@ -180,22 +48,61 @@
       0 0 0 1px theme('colors.orange.dark'),
       0 0 0 4px rgba(255,100,0,.32);
   }
+
+  :is(button,[type="button"],[type="submit"],[type="reset"],[role="button"]) { -webkit-tap-highlight-color: transparent; }
+  :is(button,[type="button"],[type="submit"],[type="reset"],[role="button"]):focus,
+  :is(button,[type="button"],[type="submit"],[type="reset"],[role="button"]):active { outline: none !important; box-shadow: none !important; }
+  :is(button,[type="button"],[type="submit"],[type="reset"],[role="button"]):focus-visible {
+    outline: none;
+    --tw-ring-color: theme('colors.orange.base');
+    --tw-ring-offset-width: 0px;
+    box-shadow: 0 0 0 2px var(--tw-ring-color);
+    border-color: theme('colors.orange.base');
+  }
+}
+
+@layer components {
+  .content-container { @apply max-w-[1440px] w-full mx-auto px-6; }
+  .contrast-btn { @apply px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-200 ease-in; }
+
+  .text-xsmall-regular { @apply text-[10px] leading-4 font-normal; }
+  .text-small-regular { @apply text-xs leading-5 font-normal; }
+  .text-small-semi { @apply text-xs leading-5 font-semibold; }
+  .text-base-regular { @apply text-sm leading-6 font-normal; }
+  .text-base-semi { @apply text-sm leading-6 font-semibold; }
+  .text-large-regular { @apply text-base leading-6 font-normal; }
+  .text-large-semi { @apply text-base leading-6 font-semibold; }
+  .text-xl-regular { @apply text-2xl leading-[36px] font-normal; }
+  .text-xl-semi { @apply text-2xl leading-[36px] font-semibold; }
+  .text-2xl-regular { @apply text-[30px] leading-[48px] font-normal; }
+  .text-2xl-semi { @apply text-[30px] leading-[48px] font-semibold; }
+  .text-3xl-regular { @apply text-[32px] leading-[44px] font-normal; }
+  .text-3xl-semi { @apply text-[32px] leading-[44px] font-semibold; }
 }
 
 @layer utilities {
-  /* Fuerza la sombra naranja en los estados “checked”/“indeterminate” */
-  .group[data-state="checked"] .group-data-\[state\=checked\]\:shadow-borders-interactive-with-shadow,
-  .group[data-state="indeterminate"] .group-data-\[state\=indeterminate\]\:shadow-borders-interactive-with-shadow {
-    --borders-interactive-with-shadow:
-      0 0 0 1px theme('colors.orange.base'),
-      0 0 0 4px rgba(255,140,0,.28) !important;
+  .border-ui-border-interactive { border-color: theme('colors.orange.base') !important; }
+  .border-ui-border-interactive:focus,
+  .border-ui-border-interactive:active,
+  .border-ui-border-interactive[data-state="on"] { border-color: theme('colors.orange.dark') !important; }
+
+  .text-ui-fg-interactive { color: theme('colors.orange.base') !important; }
+  .text-ui-fg-interactive-hover,
+  .text-ui-fg-interactive:hover { color: theme('colors.orange.dark') !important; }
+
+  .bg-ui-bg-interactive { background-color: theme('colors.orange.base') !important; color: #fff !important; }
+  .bg-ui-bg-interactive-hover,
+  .bg-ui-bg-interactive:hover { background-color: theme('colors.orange.dark') !important; color: #fff !important; }
+
+  .hover\:shadow-borders-interactive-with-active:hover {
+    box-shadow: 0 0 0 2px theme('colors.orange.base') !important;
   }
 
-  /* Por si se usa esta otra utilidad */
+  .group[data-state="checked"] .group-data-\[state\=checked\]\:shadow-borders-interactive-with-shadow,
+  .group[data-state="indeterminate"] .group-data-\[state\=indeterminate\]\:shadow-borders-interactive-with-shadow,
   .shadow-borders-interactive-with-shadow {
     --borders-interactive-with-shadow:
       0 0 0 1px theme('colors.orange.base'),
       0 0 0 4px rgba(255,140,0,.28) !important;
   }
 }
-
