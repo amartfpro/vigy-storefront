@@ -106,3 +106,40 @@
       0 0 0 4px rgba(255,140,0,.28) !important;
   }
 }
+
+@layer utilities {
+  .btn-orange {
+    color: #fff !important;
+    background-color: theme('colors.orange.base') !important;
+    border: 1px solid theme('colors.orange.dark') !important;
+    box-shadow: 0 0 0 1px theme('colors.orange.dark') !important;
+    transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .05s ease;
+  }
+  .btn-orange:hover {
+    background-color: theme('colors.orange.light') !important;
+    border-color: theme('colors.orange.base') !important;
+    box-shadow:
+      0 0 0 1px theme('colors.orange.base'),
+      0 0 0 3px rgba(255,167,0,.18) !important; /* halo suave con el light */
+  }
+  .btn-orange:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 1px theme('colors.orange.dark'),
+      0 0 0 3px rgba(255,100,0,.25) !important; /* halo más marcado para accesibilidad */
+  }
+  .btn-orange:active {
+    transform: translateY(1px);
+    background-color: theme('colors.orange.dark') !important;
+    border-color: theme('colors.orange.dark') !important;
+    box-shadow: 0 0 0 1px theme('colors.orange.dark') !important;
+  }
+  .btn-orange:disabled,
+  .btn-orange[aria-disabled="true"] {
+    opacity: .6;
+    pointer-events: none;
+  }
+}
+
+
+

@@ -185,7 +185,7 @@ export default function CartDropdown({ cart: cartState }: { cart?: HttpTypes.Sto
                           </div>
 
                           <LocalizedClientLink href="/cart" passHref>
-                            <Button className="w-full" size="large" onClick={() => setOpen(false)}>
+                            <Button className="w-full btn-orange" size="large" onClick={() => setOpen(false)}>
                               Go to cart
                             </Button>
                           </LocalizedClientLink>
