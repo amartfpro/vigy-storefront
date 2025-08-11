@@ -110,3 +110,92 @@
     @apply text-[32px] leading-[44px] font-semibold;
   }
 }
+
+@layer utilities {
+  .border-ui-border-interactive {
+    border-color: theme('colors.orange.base') !important;
+  }
+
+  .border-ui-border-interactive:focus,
+  .border-ui-border-interactive:active,
+  .border-ui-border-interactive[data-state="on"] {
+    border-color: theme('colors.orange.base') !important;
+  }
+
+  .hover\:shadow-borders-interactive-with-active:hover {
+    box-shadow: 0 0 0 2px theme('colors.orange.base') !important;
+  } 
+}
+
+@layer utilities {
+  /* Texto interactivo (links, botones de texto) */
+  .text-ui-fg-interactive {
+    color: theme('colors.orange.base') !important;
+  }
+
+  .text-ui-fg-interactive-hover,
+  .text-ui-fg-interactive:hover {
+    color: theme('colors.orange.dark') !important;
+  }
+}
+
+@layer utilities {
+  /* Fondo interactivo (botones, toggles, etc.) */
+  .bg-ui-bg-interactive {
+    background-color: theme('colors.orange.base') !important;
+  }
+
+  .bg-ui-bg-interactive-hover,
+  .bg-ui-bg-interactive:hover {
+    background-color: theme('colors.orange.dark') !important;
+  }
+
+  /* Asegura contraste en texto si el fondo es naranja */
+  .bg-ui-bg-interactive,
+  .bg-ui-bg-interactive-hover {
+    color: #fff !important;
+  }
+}
+
+@layer base {
+  /* Opcional: limita al body si quieres acotar el alcance */
+  :root, .theme-vigy {
+    /* Tokens “interactive” del preset hacia tu naranja */
+    --fg-interactive: theme('colors.orange.base');
+    --fg-interactive-hover: theme('colors.orange.dark');
+
+    --bg-interactive: theme('colors.orange.base');
+    --bg-interactive-hover: theme('colors.orange.dark');
+
+    --border-interactive: theme('colors.orange.base');
+    --border-interactive-hover: theme('colors.orange.dark');
+
+    --ring-interactive: theme('colors.orange.base');
+
+    /* Sombra/borde compuesta que usa Medusa en estados checked/active */
+    --borders-interactive-with-shadow:
+      0 0 0 1px theme('colors.orange.base'),
+      0 0 0 4px rgba(255,140,0,.28);
+    --borders-interactive-with-active:
+      0 0 0 1px theme('colors.orange.dark'),
+      0 0 0 4px rgba(255,100,0,.32);
+  }
+}
+
+@layer utilities {
+  /* Fuerza la sombra naranja en los estados “checked”/“indeterminate” */
+  .group[data-state="checked"] .group-data-\[state\=checked\]\:shadow-borders-interactive-with-shadow,
+  .group[data-state="indeterminate"] .group-data-\[state\=indeterminate\]\:shadow-borders-interactive-with-shadow {
+    --borders-interactive-with-shadow:
+      0 0 0 1px theme('colors.orange.base'),
+      0 0 0 4px rgba(255,140,0,.28) !important;
+  }
+
+  /* Por si se usa esta otra utilidad */
+  .shadow-borders-interactive-with-shadow {
+    --borders-interactive-with-shadow:
+      0 0 0 1px theme('colors.orange.base'),
+      0 0 0 4px rgba(255,140,0,.28) !important;
+  }
+}
+

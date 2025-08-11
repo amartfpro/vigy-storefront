@@ -29,7 +29,11 @@ export default function CheckoutLayout({
             className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
             data-testid="store-link"
           >
-            Medusa Store
+            <img
+              src="/images/logo.svg"
+              alt="Mi tienda"
+              className="h-8 transition-all duration-300"
+            />
           </LocalizedClientLink>
           <div className="flex-1 basis-0" />
         </nav>

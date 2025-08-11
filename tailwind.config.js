@@ -21,9 +21,9 @@ module.exports = {
         padding: "padding-top padding-right padding-bottom padding-left",
       },
       colors: {
-        primary: {
+        orange: {
           light: "#ffa700",   // Naranja más claro
-          DEFAULT: "#ff8c00", // Naranja principal
+          base: "#ff8c00", // Naranja principal
           dark: "#ff6400",    // Naranja más oscuro
         },
         grey: {
