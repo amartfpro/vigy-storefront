@@ -120,10 +120,27 @@ export default function ProductActions({
           {(product.variants?.length ?? 0) > 1 && (
             <div className="flex flex-col gap-y-4">
               {(product.options || []).map((option) => {
+                const sizeOrder = ["XS","S", "M", "L", "XL", "XXL"]
+
+                let sortedOption = option
+
+                if (option.title?.toLowerCase() === "size") {
+                  sortedOption = {
+                    ...option,
+                    values: [...option.values].sort((a, b) => {
+                      const aIndex = sizeOrder.indexOf(a.value)
+                      const bIndex = sizeOrder.indexOf(b.value)
+                      if (aIndex === -1) return 1
+                      if (bIndex === -1) return -1
+                      return aIndex - bIndex
+                    }),
+                  }
+                }
+
                 return (
                   <div key={option.id}>
                     <OptionSelect
-                      option={option}
+                      option={sortedOption}
                       current={options[option.id]}
                       updateOption={setOptionValue}
                       title={option.title ?? ""}

@@ -24,6 +24,7 @@ function CartMismatchBanner(props: {
       setActionText("Transferring..")
 
       await transferCart()
+      window.location.reload()
     } catch {
       setActionText("Run transfer again")
       setIsPending(false)
