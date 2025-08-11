@@ -22,7 +22,7 @@ const AccountLayout: React.FC<AccountLayoutProps> = ({
           <div className="flex-1">{children}</div>
         </div>
         <div className="flex flex-col small:flex-row items-end justify-between small:border-t border-gray-200 py-12 gap-8">
-          <div>
+          {/* <div>
             <h3 className="text-xl-semi mb-4">Got questions?</h3>
             <span className="txt-medium">
               You can find frequently asked questions and answers on our
@@ -33,6 +33,21 @@ const AccountLayout: React.FC<AccountLayoutProps> = ({
             <UnderlineLink href="/customer-service">
               Customer Service
             </UnderlineLink>
+          </div> */}
+          <div>
+            <h3 className="text-xl-semi mb-4">Got questions?</h3>
+            <span className="txt-medium">
+              You can contact us via email at:
+            </span>
+          </div>
+          <div>
+          <a
+            href="mailto:help@vigysportswear.com"
+            className="hover:text-ui-fg-base text-ui-fg-muted"
+            aria-label="Email"
+          >
+            help@vigysportswear.com
+          </a>
           </div>
         </div>
       </div>

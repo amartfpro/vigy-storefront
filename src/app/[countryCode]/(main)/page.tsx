@@ -4,8 +4,8 @@ import CollectionSection from "@modules/home/components/CollectionSection"
 import { Carousel } from "@modules/common/components/carousel"
 
 export const metadata: Metadata = {
-  title: "Vigy Sport",
-  description: "Colecciones de ropa de Vigy Sport",
+  title: "VIGY",
+  description: "",
 }
 
 export default async function Home() {

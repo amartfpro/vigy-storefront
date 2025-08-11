@@ -18,7 +18,7 @@ const DeleteButton = ({
     setIsDeleting(true)
     await deleteLineItem(id).catch((err) => {
       setIsDeleting(false)
-    })
+    })  
   }
 
   return (
@@ -29,7 +29,7 @@ const DeleteButton = ({
       )}
     >
       <button
-        className="flex gap-x-1 text-ui-fg-subtle hover:text-ui-fg-base cursor-pointer"
+        className="flex gap-x-1 text-white/30 hover:text-white/60 cursor-pointer"
         onClick={() => handleDelete(id)}
       >
         {isDeleting ? <Spinner className="animate-spin" /> : <Trash />}
