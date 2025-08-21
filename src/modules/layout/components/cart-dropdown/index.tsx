@@ -163,7 +163,7 @@ export default function CartDropdown({ cart: cartState }: { cart?: HttpTypes.Sto
                                 <div className="flex justify-between items-center">
                                   <DeleteButton
                                     id={item.id}
-                                    className="text-white hover:text-white text-xs"
+                                    className="text-gray-500 hover:text-gray-400 text-xs"
                                     data-testid="cart-item-remove-button"
                                   >
                                     Remove

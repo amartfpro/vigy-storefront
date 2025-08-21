@@ -163,17 +163,16 @@ export default function ProductActions({
             !inStock ||
             !selectedVariant ||
             !!disabled ||
-            isAdding ||
-            !isValidVariant
+            isAdding
           }
           variant="primary"
           className="w-full h-10"
           isLoading={isAdding}
           data-testid="add-product-button"
         >
-          {!selectedVariant && !options
+          {!selectedVariant
             ? "Select variant"
-            : !inStock || !isValidVariant
+            : !inStock
             ? "Out of stock"
             : "Add to cart"}
         </Button>

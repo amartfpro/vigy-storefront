@@ -4,6 +4,7 @@ import { Stripe, StripeElementsOptions } from "@stripe/stripe-js"
 import { Elements } from "@stripe/react-stripe-js"
 import { HttpTypes } from "@medusajs/types"
 import { createContext } from "react"
+import { appearance } from "../../../../../stripe-apperance"
 
 type StripeWrapperProps = {
   paymentSession: HttpTypes.StorePaymentSession
@@ -22,6 +23,7 @@ const StripeWrapper: React.FC<StripeWrapperProps> = ({
 }) => {
   const options: StripeElementsOptions = {
     clientSecret: paymentSession!.data?.client_secret as string | undefined,
+    appearance: appearance,
   }
 
   if (!stripeKey) {
@@ -44,7 +46,7 @@ const StripeWrapper: React.FC<StripeWrapperProps> = ({
 
   return (
     <StripeContext.Provider value={true}>
-      <Elements options={options} stripe={stripePromise}>
+      <Elements options={ options } stripe={stripePromise}>
         {children}
       </Elements>
     </StripeContext.Provider>

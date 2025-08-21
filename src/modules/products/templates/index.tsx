@@ -29,7 +29,6 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
   const sizeOrder = ['S', 'M', 'L', 'XL']
 
   if (product.variants?.length) {
-    console.log("Product Variants", product.variants)
     product.variants = [...product.variants].sort((a, b) => {
       const aSize = a.title?.value || a.title
       const bSize = b.title?.value || b.title
@@ -41,7 +40,6 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
       if (bIndex === -1) return -1
       return aIndex - bIndex
     })
-    console.log("Sorted Variants", product.variants)
   }
 
   return (
