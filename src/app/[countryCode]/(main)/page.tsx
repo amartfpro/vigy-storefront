@@ -3,6 +3,8 @@ import { listCollectionsWithProducts } from "@lib/data/collections"
 import CollectionSection from "@modules/home/components/CollectionSection"
 import { Carousel } from "@modules/common/components/carousel"
 
+export const dynamic = "force-dynamic"
+
 export const metadata: Metadata = {
   title: "VIGY",
   description: "",
