@@ -5,9 +5,13 @@ import { ArrowRightMini, XMark } from "@medusajs/icons"
 import { Text, clx, useToggleState } from "@medusajs/ui"
 import { Fragment } from "react"
 
+import { BarsThree } from "@medusajs/icons"
+
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CountrySelect from "../country-select"
 import { HttpTypes } from "@medusajs/types"
+
+import SearchModal from "@modules/search/components/modal"
 
 const SideMenuItems = {
   Home: "/",
@@ -30,7 +34,7 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                   data-testid="nav-menu-button"
                   className="relative h-full flex items-center rounded-full px-4 py-2 text-sm tracking-tight transition-all hover:bg-white/5 hover:text-ui-fg-base focus:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
                 >
-                  Menu
+                  <BarsThree/>
                 </Popover.Button>
               </div>
 
@@ -71,7 +75,7 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
 
                           <ul className="flex flex-col gap-1 p-2">
                             {Object.entries(SideMenuItems).map(([name, href]) => (
-                              <li key={name}>
+                              <li key={name} className={name === "Search" ? "small:hidden" : ""}>
                                 <LocalizedClientLink
                                   href={href}
                                   className="group block text-xl leading-8 tracking-tight text-white/90 hover:text-white hover:font-semibold transition-all duration-200 hover:bg-white/5 px-2 py-1 rounded-lg"
@@ -82,6 +86,9 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                                 </LocalizedClientLink>
                               </li>
                             ))}
+                            {/* <li  className="px-2">
+                              <SearchModal />
+                            </li> */}
                           </ul>
 
                           <div className="mt-auto p-2">

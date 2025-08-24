@@ -1,7 +1,6 @@
 import { Metadata } from "next"
 import { listCollectionsWithProducts } from "@lib/data/collections"
 import CollectionSection from "@modules/home/components/CollectionSection"
-import { Carousel } from "@modules/common/components/carousel"
 
 export const dynamic = "force-dynamic"
 
@@ -12,7 +11,6 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const { collections } = await listCollectionsWithProducts()
-  console.log("Collections fetched:", collections)
 
   if (!collections || collections.length === 0) {
     return <p className="text-center py-12">No hay colecciones disponibles.</p>
@@ -20,25 +18,21 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col gap-16">
-      {collections.map((collection) => {
+      {collections.map((collection: any) => {
         const imageUrl =
-          (collection as any)?.image?.url ||
-          collection.products?.[0]?.thumbnail ||
+        collection?.metadata?.cover_image ||
+          collection?.products?.[0]?.thumbnail ||
           "/placeholder.jpg"
 
         return (
-          <div key={collection.id} className="w-full">
-            <CollectionSection
-              title={collection.title}
-              imageUrl={imageUrl}
-              link={`/collections/${collection.handle}`}
-            />
-            {collection.products && collection.products.length > 0 && (
-              <div className="mt-6">
-                <Carousel products={collection.products} />
-              </div>
-            )}
-          </div>
+          <CollectionSection
+            key={collection.id}
+            id={collection.id}
+            title={collection.title}
+            handle={collection.handle}
+            imageUrl={imageUrl}
+            products={collection.products ?? []}
+          />
         )
       })}
     </div>

@@ -1,16 +1,14 @@
-"use client"
-
 import Link from "next/link"
 import Image from "next/image"
 import ProductPreview from "@modules/products/components/product-preview"
 import { Carousel } from "@modules/common/components/carousel"
 
-type CollectionSectionProps = {
+type Props = {
   id: string
   title: string
-  handle: string
+  handle?: string
   imageUrl: string
-  products: any[]
+  products?: any[]
 }
 
 export default function CollectionSection({
@@ -18,41 +16,46 @@ export default function CollectionSection({
   title,
   handle,
   imageUrl,
-  products
-}: CollectionSectionProps) {
+  products = [],
+}: Props) {
+  const safeProducts = Array.isArray(products) ? products : []
+  const href = handle ? `/collections/${handle}` : `/collections/id/${id}`
+  const img = imageUrl || "/placeholder.jpg"
+
   return (
-    <section className="mb-16">
-      {/* Imagen de cabecera de colección */}
-      <div className="relative w-full h-[400px] overflow-hidden">
-        <Image
-          src={imageUrl}
-          alt={title}
-          fill
-          priority
-          className="object-cover"
-        />
-        {/* Overlay con título y botón */}
-        <div className="absolute bottom-0 left-0 right-0 bg-black/50 p-6 flex flex-col items-center text-center">
-          <h2 className="text-3xl font-bold text-white mb-2">{title}</h2>
-          <Link
-            href={`/collections/${handle}`}
-            className="bg-white text-black px-6 py-2 font-semibold hover:bg-gray-200 transition"
-          >
-            View
+    <section className="mb-8">
+      <div className="relative w-full h-[100dvh] overflow-hidden hero--cover">
+        <Image src={img} alt={title} fill priority className="object-cover" sizes="100vw" />
+        <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col items-center text-center">
+          <h2 className="text-3xl font-semibold text-white mb-2">{title.toLocaleUpperCase()}</h2>
+          <Link href={href} className="text-white hover:text-white/90 transition">
+            View collection
           </Link>
         </div>
       </div>
 
-      {/* Carrusel de productos */}
-      <div className="mt-6 px-4">
-        <Carousel>
-          {products.map((p) => (
-            <div key={p.id} className="min-w-[200px]">
-              <ProductPreview {...p} />
-            </div>
-          ))}
-        </Carousel>
-      </div>
+      {safeProducts.length > 0 && (
+        <div className="m-6">
+          <Carousel >
+            {safeProducts.filter(Boolean).map((p: any) => (
+              <div
+                key={p.id}
+                className="
+                  snap-start
+                  m-0.5
+                  min-w-[200px] 
+                  sm:min-w-[250px] 
+                  md:min-w-[300px]
+                  lg:min-w-[350px]
+                  xl:min-w-[400px]
+                "
+              >
+                <ProductPreview product={p} />
+              </div>
+            ))}
+          </Carousel>
+        </div>
+      )}
     </section>
   )
 }

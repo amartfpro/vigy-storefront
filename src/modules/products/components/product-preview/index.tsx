@@ -29,7 +29,7 @@ export default async function ProductPreview({
   })
 
   return (
-    <LocalizedClientLink href={`/products/${product.handle}`} className="group">
+    <LocalizedClientLink href={`/products/${product.handle}`} className="group" style={{ aspectRatio: "3 / 4" }}>
       <div data-testid="product-wrapper">
         <Thumbnail
           thumbnail={product.thumbnail}

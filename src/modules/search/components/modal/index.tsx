@@ -8,6 +8,7 @@ import { Button } from "@medusajs/ui"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { MagnifyingGlass } from "@medusajs/icons"
 
 type Hit = {
   objectID: string;
@@ -34,7 +35,7 @@ export default function SearchModal() {
           variant="transparent"
           className="hover:text-ui-fg-base text-small-regular px-0 hover:bg-transparent focus:!bg-transparent"
         >
-          Search
+          <MagnifyingGlass/>
         </Button>
       </div>
       <Modal isOpen={isOpen} close={() => setIsOpen(false)}>

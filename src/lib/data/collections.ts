@@ -59,36 +59,24 @@ export const getCollectionByHandle = async (
 }
 
 export const listCollectionsWithProducts = async () => {
-  const next = {
-    ...(await getCacheOptions("collections")),
-  }
-
-  const { collections } = await sdk.client.fetch<{
-    collections: HttpTypes.StoreCollection[]
-  }>("/store/collections", {
-    query: {
-      fields: "id,title,handle",
-    },
-    next,
-    cache: "force-cache",
+  const { collections } = await sdk.client.fetch("/store/collections", {
+    query: { fields: "id,title,handle,+metadata", limit: "100" },
+    cache: "no-store",
   })
 
-  // obtener productos de cada colección
-  const collectionsWithProducts = await Promise.all(
-    collections.map(async (col) => {
-      const { products } = await sdk.client.fetch<{
-        products: HttpTypes.StoreProduct[]
-      }>(`/store/products`, {
+  const out = await Promise.all(
+    collections.map(async (col: any) => {
+      const { products } = await sdk.client.fetch("/store/products", {
         query: {
-          collection_id: col.id,
-          fields: "id,title,handle,thumbnail,variants.prices",
+          collection_id: [col.id],
+          fields: "id,title,handle,thumbnail,*variants.calculated_price",
+          limit: "12",
         },
-        next,
-        cache: "force-cache",
+        cache: "no-store",
       })
       return { ...col, products }
     })
   )
 
-  return collectionsWithProducts
+  return { collections: out }
 }

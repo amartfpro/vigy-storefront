@@ -12,6 +12,7 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import Thumbnail from "@modules/products/components/thumbnail"
 import { usePathname } from "next/navigation"
 import { Fragment, useEffect, useRef, useState } from "react"
+import { ShoppingBag } from "@medusajs/icons"
 
 export default function CartDropdown({ cart: cartState }: { cart?: HttpTypes.StoreCart | null }) {
   const [open, setOpen] = useState(false)
@@ -54,7 +55,7 @@ export default function CartDropdown({ cart: cartState }: { cart?: HttpTypes.Sto
         className="relative h-full flex items-center rounded-full px-4 py-2 text-sm tracking-tight transition-all hover:bg-white/5 hover:text-ui-fg-base"
         data-testid="nav-cart-link"
       >
-        {`Cart (${totalItems})`}
+        <ShoppingBag/>{`${totalItems}`}
       </button>
 
       <Transition show={open} as={Fragment}>

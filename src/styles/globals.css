@@ -160,3 +160,11 @@
       inset 0 1px 0 rgba(255,255,255,.18) !important;
   }
 }
+
+/* Home (cuando exista .hero--cover) → nav claro y transparente */
+body:has(.hero--cover) .nav .nav-header { background-color: transparent !important; }
+body:has(.hero--cover) .nav .nav-content { color: #ffffff !important; }
+
+/* Al pasar el ratón por la barra en home: fondo blanco y texto oscuro */
+body:has(.hero--cover) .nav .nav-header:hover { background-color: #ffffff !important; }
+body:has(.hero--cover) .nav .nav-header:hover .nav-content { color: #111827 !important; } /* neutral-900 */
