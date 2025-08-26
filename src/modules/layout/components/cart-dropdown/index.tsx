@@ -199,7 +199,7 @@ export default function CartDropdown({ cart: cartState }: { cart?: HttpTypes.Sto
                         </div>
                         <span>Your shopping bag is empty.</span>
                         <LocalizedClientLink href="/store">
-                          <Button onClick={() => setOpen(false)}>Explore products</Button>
+                          <Button className="w-full btn-orange" onClick={() => setOpen(false)}>Explore products</Button>
                         </LocalizedClientLink>
                       </div>
                     )}
