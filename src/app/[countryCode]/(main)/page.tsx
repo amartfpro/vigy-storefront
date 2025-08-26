@@ -15,7 +15,7 @@ export default async function Home() {
 if (!collections || collections.length === 0) {
   return (
     <div className="pt-16 sm:pt-20">
-      <p className="text-center py-12">No hay colecciones disponibles.</p>
+      <p className="text-center py-12">Working on next collections.</p>
     </div>
   )
 }
