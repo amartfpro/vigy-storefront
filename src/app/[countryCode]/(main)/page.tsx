@@ -12,10 +12,13 @@ export const metadata: Metadata = {
 export default async function Home() {
   const { collections } = await listCollectionsWithProducts()
 
-  if (!collections || collections.length === 0) {
-    return <p className="text-center py-12 pt-12">No hay colecciones disponibles.</p>
-  }
-
+if (!collections || collections.length === 0) {
+  return (
+    <div className="pt-16 sm:pt-20">
+      <p className="text-center py-12">No hay colecciones disponibles.</p>
+    </div>
+  )
+}
   return (
     <div className="flex flex-col gap-16">
       {collections.map((collection: any) => {
