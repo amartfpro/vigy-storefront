@@ -13,7 +13,7 @@ export default async function Home() {
   const { collections } = await listCollectionsWithProducts()
 
   if (!collections || collections.length === 0) {
-    return <p className="text-center py-12 mt-12">No hay colecciones disponibles.</p>
+    return <p className="text-center py-12 pt-12">No hay colecciones disponibles.</p>
   }
 
   return (
