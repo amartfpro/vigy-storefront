@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 import { listCollectionsWithProducts } from "@lib/data/collections"
 import CollectionSection from "@modules/home/components/CollectionSection"
+import Image from "next/image"
 
 export const dynamic = "force-dynamic"
 
@@ -14,9 +15,24 @@ export default async function Home() {
 
 if (!collections || collections.length === 0) {
   return (
-    <div className="pt-16 sm:pt-20">
-      <p className="text-center py-12">Working on next collections.</p>
-    </div>
+    <section className="relative w-full">
+      <div className="relative w-full aspect-[16/9]">
+        <Image
+          src="/covers/cover0.png"
+          alt="WORKING ON NEXT COLLECTIONS"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-black/30 z-[1]" />
+        <div className="absolute inset-0 z-10 flex items-center justify-center px-6">
+          <p className="text-center text-white text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight">
+            Working on next collections.
+          </p>
+        </div>
+      </div>
+    </section>
   )
 }
   return (
