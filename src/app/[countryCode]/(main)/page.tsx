@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import { listCollectionsWithProducts } from "@lib/data/collections"
 import CollectionSection from "@modules/home/components/CollectionSection"
 import Image from "next/image"
-import cover0 from "@/../public/cover0.jpg"
+import cover0 from "../../../../public/covers/cover0.jpg"
 
 export const dynamic = "force-dynamic"
 
