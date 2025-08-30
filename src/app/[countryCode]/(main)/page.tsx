@@ -38,7 +38,7 @@ if (!collections || collections.length === 0) {
 }
   return (
     <div className="flex flex-col gap-16">
-      {collections.map((collection: any) => {
+      {collections.map((collection: any, index: number) => {
         const imageUrl =
         collection?.metadata?.cover_image ||
           collection?.products?.[0]?.thumbnail ||
@@ -52,6 +52,7 @@ if (!collections || collections.length === 0) {
             handle={collection.handle}
             imageUrl={imageUrl}
             products={collection.products ?? []}
+            isFirstCollection={index === 0}
           />
         )
       })}
