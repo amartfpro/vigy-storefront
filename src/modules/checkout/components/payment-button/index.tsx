@@ -153,6 +153,7 @@ const StripePaymentButton = ({
         size="large"
         isLoading={submitting}
         data-testid={dataTestId}
+        className="mt-6 btn-orange"
       >
         Place order
       </Button>
@@ -184,6 +185,7 @@ const ManualTestPaymentButton = ({ notReady, "data-testid": dataTestId }: { notR
         onClick={handlePayment}
         size="large"
         data-testid={dataTestId ?? "submit-order-button"}
+        className="mt-6 btn-orange"
       >
         Place order
       </Button>

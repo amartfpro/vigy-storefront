@@ -28,7 +28,7 @@ export default function CollectionSection({
         <Image src={img} alt={title} fill priority className="object-cover" sizes="100vw" />
         <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col items-center text-center">
           <h2 className="text-3xl font-semibold text-white mb-2">{title.toLocaleUpperCase()}</h2>
-          <Link href={href} className="text-white hover:text-white/90 transition">
+          <Link href={href} className="text-white hover:text-white/80 transition">
             View collection
           </Link>
         </div>
